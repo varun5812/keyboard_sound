@@ -89,16 +89,24 @@ function getIconPath(): string {
     : process.platform === 'darwin' ? 'typeflow-icon.icns'
     : 'typeflow-icon.png';
 
-  // In development, use the public folder
+  // 1. Packaged app path (inside app.asar or unpacked)
+  const appPath = path.join(app.getAppPath(), 'public', iconFile);
+  if (fs.existsSync(appPath)) return appPath;
+
+  // 2. In development, use the public folder
   const devPath = path.join(process.cwd(), 'public', iconFile);
   if (fs.existsSync(devPath)) return devPath;
 
-  // In production (packaged), use resources folder
+  // 3. In production, check resources folder
   const prodPath = path.join(process.resourcesPath ?? '', iconFile);
   if (fs.existsSync(prodPath)) return prodPath;
 
+  // 4. Relative to compiled script
+  const relPath = path.join(__dirname, '..', 'public', iconFile);
+  if (fs.existsSync(relPath)) return relPath;
+
   // Fallback: SVG-based nativeImage
-  return path.join(process.cwd(), 'public', 'typeflow-icon.svg');
+  return path.join(app.getAppPath(), 'public', 'typeflow-icon.svg');
 }
 
 function createWindow(): void {

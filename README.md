@@ -20,7 +20,19 @@ TypeFlow plays beautiful, low-latency audio on every keystroke using the Web Aud
 
 ---
 
-## 🚀 Getting Started
+## 💾 Download & Install (Windows)
+
+Ordinary users can download and install TypeFlow without needing to use a terminal:
+
+👉 **[Download TypeFlow for Windows (TypeFlow-Setup.exe)](https://github.com/varun5812/keyboard_sound/releases/latest/download/TypeFlow-Setup.exe)**
+
+1. Download **`TypeFlow-Setup.exe`** from the direct link above.
+2. Run the installer (sets up Start Menu and Desktop shortcuts).
+3. TypeFlow launches and runs in the Windows system tray, reacting to typing system-wide.
+
+---
+
+## 🚀 Development & Building from Source
 
 ### Prerequisites
 - Node.js 18+ and npm

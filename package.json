@@ -15,8 +15,8 @@
     "electron:dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && npm run build:electron && cross-env NODE_ENV=development electron .\"",
     "electron:preview": "npm run build && electron .",
     "pack": "npm run build && electron-builder --dir",
-    "dist": "npm run build && electron-builder --win",
-    "dist:portable": "npm run build && electron-builder --win portable",
+    "dist": "npm run build && electron-builder --win --publish never",
+    "dist:portable": "npm run build && electron-builder --win portable --publish never",
     "generate-icons": "powershell -ExecutionPolicy Bypass -File scripts/generate-icons.ps1",
     "lint": "oxlint",
     "preview": "vite preview"
@@ -45,6 +45,8 @@
     "appId": "com.typeflow.desktop",
     "productName": "TypeFlow",
     "copyright": "Copyright © 2026 TypeFlow",
+    "npmRebuild": false,
+    "publish": null,
     "directories": {
       "output": "release"
     },
